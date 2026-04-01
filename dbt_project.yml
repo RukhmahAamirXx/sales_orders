@@ -1,0 +1,17 @@
+name: sales_project
+version: 1.0
+profile: sales_project
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+asset-paths: ["assets"]
+
+models:
+  sales_project:
+    +materialized: table
+    +database: SALES_DB
+    +schema: ANALYTICS
+
+seeds:
+  sales_project:
+    +schema: RAW

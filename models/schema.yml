@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: customer_sales_summary
+    description: >
+      This model calculates the total sales amount per customer per product category.
+
+      It joins raw sales data with product information to enrich transactions with pricing and category details.
+
+      The transformation involves:
+      1. Extracting sales data from SALES_DB.RAW.SALES_DATA
+      2. Loading product data from the dbt seed (products CSV)
+      3. Joining both datasets on product_id
+      4. Calculating line item sales as (quantity × price)
+      5. Aggregating total sales per customer and product category
+
+      The final output is a summary table used for business analysis.
+
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+
+      - name: product_category
+        description: "Category of the purchased product (e.g., Electronics, Fashion)"
+
+      - name: total_sales_amount
+        description: "Total sales amount calculated as SUM(quantity × price)"
